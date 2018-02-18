@@ -11,6 +11,10 @@ CREATE TABLE changes (
   date_finished TIMESTAMP NULL
 );
 
+CREATE INDEX changes_user on changes(user_id);
+CREATE INDEX change_status on changes(status);
+CREATE INDEX change_date_finished on changes(date_finished NULLS LAST);
+
 INSERT INTO changes (user_id, impact, data) SELECT 1, 1, '{ "test" :1 }';
 
 SELECT * FROM changes;
