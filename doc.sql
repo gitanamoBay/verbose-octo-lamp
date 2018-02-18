@@ -12,6 +12,6 @@ CREATE TABLE users(
   enabled BOOLEAN NOT NULL DEFAULT (TRUE)
  );
 
-INSERT INTO users (username, password) VALUES ('grant', 'pass');
+INSERT INTO users (username, password) SELECT 'grant', 'pass' WHERE NOT EXISTS (SELECT id FROM users WHERE username='grant');
 
-SELECT * from users WHERE username = 'grant';
+SELECT * from users;
